@@ -1,0 +1,12 @@
+[package]
+name = "desktop"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+common = { path = "../../crates/common" }
+ai_session_manager = { path = "../../crates/ai_session_manager" }
+parser = { path = "../../crates/parser" }
+execution_planner = { path = "../../crates/execution_planner" }
+execution_queue = { path = "../../crates/execution_queue" }
+execution_engine = { path = "../../crates/execution_engine" }

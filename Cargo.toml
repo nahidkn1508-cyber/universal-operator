@@ -1,0 +1,31 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "apps/desktop",
+    "crates/common",
+    "crates/ai_session_manager",
+    "crates/ai_connector",
+    "crates/response_listener",
+    "crates/parser",
+    "crates/execution_planner",
+    "crates/execution_queue",
+    "crates/execution_engine",
+    "crates/platform",
+    "crates/logger",
+    "crates/permission_manager",
+    "crates/settings_manager",
+    "crates/ui_manager",
+    "crates/workspace",
+    "crates/executor",
+    "app",
+    "DemoApp",
+    "crates/file_manager",
+    "crates/application_controller",
+    "crates/browser_controller",
+    "crates/execution_reporter",
+    "crates/window_manager",
+    "crates/mouse_controller",
+    "crates/keyboard_controller",
+    "crates/work_session_manager"
+]

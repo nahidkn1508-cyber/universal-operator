@@ -1,0 +1,12 @@
+[package]
+name = "executor"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+logger = { path = "../logger" }
+common = { path = "../common" }
+permission_manager = { path = "../permission_manager" }
+application_controller = { path = "../application_controller" }
+browser_controller = { path = "../browser_controller" }
+execution_reporter = { path = "../execution_reporter" }

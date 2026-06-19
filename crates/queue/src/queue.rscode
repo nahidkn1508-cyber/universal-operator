@@ -1,0 +1,33 @@
+code crates/queue/src/queue.rsuse common::types::action::Action;
+
+pub struct ExecutionQueue {
+    actions: Vec<Action>,
+}
+
+impl ExecutionQueue {
+    pub fn new() -> Self {
+        Self {
+            actions: Vec::new(),
+        }
+    }
+
+    pub fn enqueue(&mut self, action: Action) {
+        self.actions.push(action);
+    }
+
+    pub fn dequeue(&mut self) -> Option<Action> {
+        if self.actions.is_empty() {
+            None
+        } else {
+            Some(self.actions.remove(0))
+        }
+    }
+
+    pub fn len(&self) -> usize {
+        self.actions.len()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.actions.is_empty()
+    }
+}

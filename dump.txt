@@ -1,0 +1,306 @@
+========== 0 ==========
+[AXTextField] DESC: Search
+========== 1 ==========
+[AXButton] DESC: ChatGPT
+========== 2 ==========
+[AXButton] DESC: Library
+========== 3 ==========
+[AXButton] DESC: GPTs
+========== 4 ==========
+[AXHeading] DESC: Projects
+========== 5 ==========
+[AXButton] DESC: New project
+========== 6 ==========
+[AXButton] DESC: Universal sniper bot
+========== 7 ==========
+[AXHeading] DESC: Recents
+========== 8 ==========
+[AXButton] DESC: Lucid Dreaming Explained
+========== 9 ==========
+[AXButton] DESC: founder bibal universal operator
+========== 10 ==========
+[AXButton] DESC: Founder Bible Vision
+========== 11 ==========
+[AXButton] DESC: Greeting Interaction
+========== 12 ==========
+[AXButton] DESC: Fable 5 Realistic 3D Grass
+========== 13 ==========
+[AXButton] DESC: GitLab Duo Claude Fable
+========== 14 ==========
+[AXButton] DESC: What is Pyrexia
+========== 15 ==========
+[AXButton] DESC: Subject and Predicate MCQs
+========== 16 ==========
+[AXButton] DESC: Connecting 2.4 GHz Controller
+========== 17 ==========
+[AXButton] DESC: Non-salaried student AO Code
+========== 18 ==========
+[AXButton] DESC: Run GitHub Project Mac
+========== 19 ==========
+[AXButton] DESC: Odysseus Setup Guide
+========== 20 ==========
+[AXButton] DESC: Clumsy Image Redraw Request
+========== 21 ==========
+[AXButton] DESC: Clumsy Image Redraw Request
+========== 22 ==========
+[AXButton] DESC: Redis in My Bot
+========== 23 ==========
+[AXButton] DESC: सोशल मीडिया इन्फोग्राफिक जांच
+========== 24 ==========
+[AXButton] DESC: USB-C Hub Comparison
+========== 25 ==========
+[AXButton] DESC: Bot Setup Process
+========== 26 ==========
+[AXButton] DESC: Game State Modification Guide
+========== 27 ==========
+[AXButton] DESC: 3D Character Generation Tools
+========== 28 ==========
+[AXButton] DESC: React Project Status
+========== 29 ==========
+[AXMenuButton] DESC: Nasim Kn
+========== 30 ==========
+[AXStaticText] DESC: That’s just a Swift type issue on newer versions of Swift.
+
+Replace only this block:
+========== 31 ==========
+[AXHeading] DESC: Swift code block
+========== 32 ==========
+[AXStaticText] DESC: guard AXUIElementCopyAttributeValue(
+
+    axApp,
+
+    kAXFocusedWindowAttribute as CFString,
+
+    &focused
+
+) == .success,
+
+let window = focused as? AXUIElement else {
+
+    print("Unable to access focused window.")
+
+    exit(1)
+
+}
+
+walk(window)
+========== 33 ==========
+[AXStaticText] DESC: with this:
+========== 34 ==========
+[AXHeading] DESC: Swift code block
+========== 35 ==========
+[AXStaticText] DESC: guard AXUIElementCopyAttributeValue(
+
+    axApp,
+
+    kAXFocusedWindowAttribute as CFString,
+
+    &focused
+
+) == .success else {
+
+    print("Unable to access focused window.")
+
+    exit(1)
+
+}
+
+walk(focused as! AXUIElement)
+========== 36 ==========
+[AXStaticText] DESC: Then run:
+========== 37 ==========
+[AXHeading] DESC: Bash code block
+========== 38 ==========
+[AXStaticText] DESC: xcrun swift tools/chatgpt_read.swift > dump.txt
+========== 39 ==========
+[AXStaticText] DESC: The previous version used as? AXUIElement, but AXUIElement is a Core Foundation type, so Swift correctly complains that the conditional cast is unnecessary. A forced cast (as! AXUIElement) is the correct approach here after checking that AXUIElementCopyAttributeValue succeeded.
+========== 40 ==========
+[AXStaticText] DESC: Send me final one
+========== 41 ==========
+[AXHeading] DESC: Swift code block
+========== 42 ==========
+[AXStaticText] DESC: import Cocoa
+
+import ApplicationServices
+
+var collected: [String] = []
+
+func walk(_ element: AXUIElement) {
+
+    var roleValue: CFTypeRef?
+
+    var valueValue: CFTypeRef?
+
+    var descValue: CFTypeRef?
+
+    var childrenValue: CFTypeRef?
+
+    var role = ""
+
+    if AXUIElementCopyAttributeValue(
+
+        element,
+
+        kAXRoleAttribute as CFString,
+
+        &roleValue
+
+    ) == .success {
+
+        role = roleValue as? String ?? ""
+
+    }
+
+    let value: String = {
+
+        if AXUIElementCopyAttributeValue(
+
+            element,
+
+            kAXValueAttribute as CFString,
+
+            &valueValue
+
+        ) == .success {
+
+            return valueValue as? String ?? ""
+
+        }
+
+        return ""
+
+    }()
+
+    let desc: String = {
+
+        if AXUIElementCopyAttributeValue(
+
+            element,
+
+            kAXDescriptionAttribute as CFString,
+
+            &descValue
+
+        ) == .success {
+
+            return descValue as? String ?? ""
+
+        }
+
+        return ""
+
+    }()
+
+    if !value.isEmpty {
+
+        collected.append("[\(role)] VALUE: \(value)")
+
+    }
+
+    if !desc.isEmpty {
+
+        collected.append("[\(role)] DESC: \(desc)")
+
+    }
+
+    if AXUIElementCopyAttributeValue(
+
+        element,
+
+        kAXChildrenAttribute as CFString,
+
+        &childrenValue
+
+    ) == .success,
+
+    let children = childrenValue as? [AXUIElement] {
+
+        for child in children {
+
+            walk(child)
+
+        }
+
+    }
+
+}
+
+guard let app = NSWorkspace.shared.runningApplications.first(where: {
+
+    $0.localizedName == "ChatGPT"
+
+}) else {
+
+    print("ChatGPT not running.")
+
+    exit(1)
+
+}
+
+let axApp = AXUIElementCreateApplication(app.processIdentifier)
+
+var focused: CFTypeRef?
+
+guard AXUIElementCopyAttributeValue(
+
+    axApp,
+
+    kAXFocusedWindowAttribute as CFString,
+
+    &focused
+
+) == .success else {
+
+    print("Unable to access focused window.")
+
+    exit(1)
+
+}
+
+walk(focused as! AXUIElement)
+
+for (i, item) in collected.enumerated() {
+
+    print("========== \(i) ==========")
+
+    print(item)
+
+}
+========== 43 ==========
+[AXStaticText] DESC: Then run:
+========== 44 ==========
+[AXHeading] DESC: Bash code block
+========== 45 ==========
+[AXStaticText] DESC: xcrun swift tools/chatgpt_read.swift > dump.txt
+========== 46 ==========
+[AXStaticText] DESC: This version compiles correctly with Swift 6 and avoids the conditional downcast to CoreFoundation type 'AXUIElement' will always succeed error.
+========== 47 ==========
+[AXStaticText] DESC: Replace the entire tools/chatgpt_read.swift with this:
+========== 48 ==========
+[AXButton] DESC: Copy
+========== 49 ==========
+[AXStaticText] VALUE: Ask anything
+========== 50 ==========
+[AXButton] DESC: Attach
+========== 51 ==========
+[AXButton] DESC: Search
+========== 52 ==========
+[AXButton] DESC: Work with Apps
+========== 53 ==========
+[AXButton] VALUE: Auto
+========== 54 ==========
+[AXButton] DESC: Options
+========== 55 ==========
+[AXButton] DESC: Dictation
+========== 56 ==========
+[AXButton] DESC: Send
+========== 57 ==========
+[AXButton] DESC: Toggle Sidebar
+========== 58 ==========
+[AXButton] DESC: New chat
+========== 59 ==========
+[AXButton] DESC: ChatGPT
+========== 60 ==========
+[AXButton] DESC: Share
+========== 61 ==========
+[AXButton] DESC: Move to new window

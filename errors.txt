@@ -1,0 +1,108 @@
+    Checking common v0.1.0 (/Users/nahid/Developer/universal-operator/crates/common)
+    Checking execution_reporter v0.1.0 (/Users/nahid/Developer/universal-operator/crates/execution_reporter)
+    Checking logger v0.1.0 (/Users/nahid/Developer/universal-operator/crates/logger)
+    Checking permission_manager v0.1.0 (/Users/nahid/Developer/universal-operator/crates/permission_manager)
+    Checking browser_controller v0.1.0 (/Users/nahid/Developer/universal-operator/crates/browser_controller)
+    Checking application_controller v0.1.0 (/Users/nahid/Developer/universal-operator/crates/application_controller)
+    Checking response_listener v0.1.0 (/Users/nahid/Developer/universal-operator/crates/response_listener)
+    Checking ai_connector v0.1.0 (/Users/nahid/Developer/universal-operator/crates/ai_connector)
+    Checking ai_session_manager v0.1.0 (/Users/nahid/Developer/universal-operator/crates/ai_session_manager)
+    Checking file_manager v0.1.0 (/Users/nahid/Developer/universal-operator/crates/file_manager)
+warning: unused import: `error_code::*`
+ --> crates/common/src/types/error/mod.rs:4:9
+  |
+4 | pub use error_code::*;
+  |         ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+    Checking mouse_controller v0.1.0 (/Users/nahid/Developer/universal-operator/crates/mouse_controller)
+    Checking keyboard_controller v0.1.0 (/Users/nahid/Developer/universal-operator/crates/keyboard_controller)
+    Checking window_manager v0.1.0 (/Users/nahid/Developer/universal-operator/crates/window_manager)
+warning: unused import: `session_connection::*`
+ --> crates/ai_session_manager/src/manager/mod.rs:5:9
+  |
+5 | pub use session_connection::*;
+  |         ^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `session_registry::*`
+ --> crates/ai_session_manager/src/manager/mod.rs:7:9
+  |
+7 | pub use session_registry::*;
+  |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `session_id::*`
+ --> crates/ai_session_manager/src/session/mod.rs:7:9
+  |
+7 | pub use session_id::*;
+  |         ^^^^^^^^^^^^^
+
+warning: unused import: `session_kind::*`
+ --> crates/ai_session_manager/src/session/mod.rs:8:9
+  |
+8 | pub use session_kind::*;
+  |         ^^^^^^^^^^^^^^^
+
+warning: unused import: `session_state::*`
+ --> crates/ai_session_manager/src/session/mod.rs:9:9
+  |
+9 | pub use session_state::*;
+  |         ^^^^^^^^^^^^^^^^
+
+warning: `common` (lib) generated 1 warning (run `cargo fix --lib -p common` to apply 1 suggestion)
+    Checking parser v0.1.0 (/Users/nahid/Developer/universal-operator/crates/parser)
+    Checking work_session_manager v0.1.0 (/Users/nahid/Developer/universal-operator/crates/work_session_manager)
+    Checking workspace v0.1.0 (/Users/nahid/Developer/universal-operator/crates/workspace)
+    Checking executor v0.1.0 (/Users/nahid/Developer/universal-operator/crates/executor)
+warning: `ai_session_manager` (lib) generated 5 warnings (run `cargo fix --lib -p ai_session_manager` to apply 5 suggestions)
+warning: `ai_session_manager` (lib test) generated 5 warnings (5 duplicates)
+    Checking execution_queue v0.1.0 (/Users/nahid/Developer/universal-operator/crates/execution_queue)
+    Checking execution_planner v0.1.0 (/Users/nahid/Developer/universal-operator/crates/execution_planner)
+    Checking execution_engine v0.1.0 (/Users/nahid/Developer/universal-operator/crates/execution_engine)
+    Checking desktop v0.1.0 (/Users/nahid/Developer/universal-operator/apps/desktop)
+    Checking app v0.1.0 (/Users/nahid/Developer/universal-operator/app)
+warning: `common` (lib test) generated 1 warning (1 duplicate)
+error[E0599]: no associated function or constant named `new` found for struct `Parser` in the current scope
+  --> app/src/main.rs:64:26
+   |
+64 |     let parser = Parser::new();
+   |                          ^^^ associated function or constant not found in `Parser`
+
+error[E0599]: no associated function or constant named `new` found for struct `ExecutionPlanner` in the current scope
+  --> app/src/main.rs:65:37
+   |
+65 |     let planner = ExecutionPlanner::new();
+   |                                     ^^^ associated function or constant not found in `ExecutionPlanner`
+
+error[E0308]: mismatched types
+  --> app/src/main.rs:83:26
+   |
+83 |         executor.execute(&action);
+   |                  ------- ^^^^^^^ expected `common::types::Action`, found `parser::Action`
+   |                  |
+   |                  arguments to this method are incorrect
+   |
+   = note: `parser::Action` and `common::types::Action` have similar names, but are actually distinct types
+note: `parser::Action` is defined in crate `parser`
+  --> crates/parser/src/lib.rs:2:1
+   |
+ 2 | pub enum Action {
+   | ^^^^^^^^^^^^^^^
+note: `common::types::Action` is defined in crate `common`
+  --> crates/common/src/types/action/action.rs:4:1
+   |
+ 4 | pub struct Action {
+   | ^^^^^^^^^^^^^^^^^
+note: method defined here
+  --> crates/executor/src/execution/executor.rs:34:12
+   |
+34 |     pub fn execute(&self, action: &Action) {
+   |            ^^^^^^^
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `app` (bin "app" test) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `app` (bin "app") due to 3 previous errors

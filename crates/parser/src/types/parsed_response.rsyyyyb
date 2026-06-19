@@ -1,0 +1,26 @@
+#[derive(Debug, Clone, Default)]
+pub struct ParsedResponse {
+    pub actions: Vec<Action>,
+    pub raw_response: String,
+}
+
+impl ParsedResponse {
+    pub fn new(raw_response: impl Into<String>) -> Self {
+        Self {
+            actions: Vec::new(),
+            raw_response: raw_response.into(),
+        }
+    }
+
+    pub fn add_action(&mut self, action: Action) {
+        self.actions.push(action);
+    }
+
+    pub fn action_count(&self) -> usize {
+        self.actions.len()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.actions.is_empty()
+    }
+}

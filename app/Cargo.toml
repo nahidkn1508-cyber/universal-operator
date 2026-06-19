@@ -1,0 +1,18 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+common = { path = "../crates/common" }
+parser = { path = "../crates/parser" }
+execution_planner = { path = "../crates/execution_planner" }
+execution_queue = { path = "../crates/execution_queue" }
+executor = { path = "../crates/executor" }
+response_listener = { path = "../crates/response_listener" }
+ai_connector = { path = "../crates/ai_connector" }
+ai_session_manager = { path = "../crates/ai_session_manager" }
+file_manager = { path = "../crates/file_manager" }
+application_controller = { path = "../crates/application_controller" }
+browser_controller = { path = "../crates/browser_controller" }
+permission_manager = { path = "../crates/permission_manager" }
